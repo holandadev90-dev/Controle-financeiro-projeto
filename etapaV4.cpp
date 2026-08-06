@@ -120,13 +120,13 @@ void totalextrato()
                               
             cout << "\n=========== EXTRATO ============\n";
             cout << "Ultimo saque:        R$" << saque1 << endl;
-            cout << "Data: " << dataSaque1 << endl;
+            cout << "Data e Hora: " << dataSaque1 << endl;
             cout << "\n\n";
             cout << "Penultimo saque:     R$" << saque2 << endl;
-            cout << "Data: " << dataSaque2 << endl;
+            cout << "Data e Hora: " << dataSaque2 << endl;
             cout << "\n\n";
             cout << "Antepenultimo saque: R$" << saque3 << endl;
-            cout << "Data: " << dataSaque3 << endl;
+            cout << "Data e Hora: " << dataSaque3 << endl;
             cout << "\n===============================\n\n";
 
             cout << "Seu saldo atual e: " << saldo << endl;
@@ -190,7 +190,7 @@ int main()
     } while (opcao != 5);
 
     cout << "====== ======= ====== ====== ======";
-    cout << "\n======== Programa encerrado! ======" << endl;
+    cout << "\n======== Controle encerrado! ======" << endl;
     cout << "====== ======= ====== ====== ======";
     return 0;
 }
