@@ -8,24 +8,35 @@ void cadastro()
 {
     string LoginDigitado, senhaCadastrada, senhaConfirmacao;
 
-    cout << "\n=========== CADASTRO ===========\n";
-    cout << "Digite um Nome de usuario: ";
+    cout << "\n==================================================\n";
+    cout << "                 NOVO CADASTRO\n";
+    cout << "==================================================\n";
+
+    cout << "\nCrie sua conta para acessar o Controle Financeiro.\n";
+
+    cout << "\n--------------------------------------------------\n";
+    cout << "Nome de usuario: ";
     getline(cin >> ws, usuarioCadastrado);
 
-    cout << "Escolha um Login para acessar o sistema: ";
+    cout << "Login: ";
     cin >> LoginDigitado;
 
-    cout << "Digite uma senha: ";
+    cout << "Senha: ";
     cin >> senhaCadastrada;
 
-    cout << "Confirme a Senha: ";
+    cout << "Confirmar senha: ";
     cin >> senhaConfirmacao;
 
     while (senhaCadastrada != senhaConfirmacao)
     {
-        cout << "\nAs senhas nao conferem. Digite novamente a senha: ";
+        cout << "\n--------------------------------------------------\n";
+        cout << "ERRO: As senhas nao conferem!\n";
+        cout << "--------------------------------------------------\n";
+
+        cout << "\nDigite novamente a senha: ";
         cin >> senhaCadastrada;
-        cout << "Confirme a Senha: ";
+
+        cout << "Confirme a senha: ";
         cin >> senhaConfirmacao;
     }
 
@@ -37,12 +48,29 @@ void cadastro()
 
     if (res == SQLITE_OK)
     {
-        cout << "\n ====== CADASTRO REALIZADO COM SUCESSO! ======\n";
-        cout << "Bem Vindo(a) Ao nosso Controle Financeiro " << usuarioCadastrado << "!\n";
+        cout << "\n==================================================\n";
+        cout << "             CADASTRO REALIZADO!\n";
+        cout << "==================================================\n";
+
+        cout << "\nBem-vindo(a), " << usuarioCadastrado << "!\n";
+        cout << "Sua conta foi criada com sucesso.\n";
+        cout << "Agora voce ja pode acessar o sistema.\n";
+
+        cout << "\n==================================================\n";
     }
     else
     {
-        cout << "\n[ERRO AO CADASTRAR]: O Login '" << LoginDigitado << "' ja existe no banco.\n";
+        cout << "\n==================================================\n";
+        cout << "                 ERRO NO CADASTRO\n";
+        cout << "==================================================\n";
+
+        cout << "\nO login '" << LoginDigitado
+             << "' ja existe no sistema ,tente novamente.\n";
+
+        cout << "\nEscolha outro login e tente novamente.\n";
+
+        cout << "\n==================================================\n";
+
         if (mensagemErro)
             sqlite3_free(mensagemErro);
     }
@@ -52,11 +80,20 @@ bool login()
 {
     string LoginEntrada, SenhaEntrada;
 
-    cout << "\n============ LOGIN DE ACESSO ============\n";
-    cout << "Digite seu Login: ";
+    cout << "\n==================================================\n";
+    cout << "                  LOGIN DE ACESSO\n";
+    cout << "==================================================\n";
+
+    cout << "\nDigite seus dados para acessar sua conta.\n";
+
+    cout << "\n--------------------------------------------------\n";
+    cout << "Login: ";
     cin >> LoginEntrada;
-    cout << "Digite sua Senha: ";
+
+    cout << "Senha: ";
     cin >> SenhaEntrada;
+
+    cout << "\n--------------------------------------------------\n";
 
     string sql = "SELECT id, nome, saldo, total_gasto FROM usuarios WHERE login = '" + LoginEntrada + "' AND senha = '" + SenhaEntrada + "';";
 
@@ -70,13 +107,29 @@ bool login()
         saldo = sqlite3_column_double(stmt, 2);
         total = sqlite3_column_double(stmt, 3);
 
-        cout << "\n======= LOGIN REALIZADO COM SUCESSO! =======\n";
+        cout << "\n==================================================\n";
+        cout << "             LOGIN REALIZADO COM SUCESSO!\n";
+        cout << "==================================================\n";
+
+        cout << "\nBem-vindo(a), " << usuarioCadastrado << "!\n";
+        cout << "Acesso autorizado ao Controle Financeiro.\n";
+
+        cout << "\n==================================================\n";
+
         sqlite3_finalize(stmt);
         return true;
     }
     else
     {
-        cout << "\n======== LOGIN OU SENHA INCORRETOS! ========\n";
+        cout << "\n==================================================\n";
+        cout << "                 ACESSO NEGADO\n";
+        cout << "==================================================\n";
+
+        cout << "\nLogin ou senha incorretos.\n";
+        cout << "Verifique seus dados e tente novamente.\n";
+
+        cout << "\n==================================================\n";
+
         sqlite3_finalize(stmt);
         return false;
     }
@@ -88,5 +141,13 @@ void deslogar()
     usuarioCadastrado = "";
     saldo = 0.0;
     total = 0.0;
-    cout << "\n======= LOGOUT REALIZADO COM SUCESSO! =======\n";
+
+    cout << "\n==================================================\n";
+    cout << "                  SESSAO ENCERRADA\n";
+    cout << "==================================================\n";
+
+    cout << "\nLogout realizado com sucesso!\n";
+    cout << "Ate a proxima visita.\n";
+
+    cout << "\n==================================================\n";
 }

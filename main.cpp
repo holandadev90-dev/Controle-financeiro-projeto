@@ -14,18 +14,25 @@ void Menu()
     {
         cout << fixed << setprecision(2);
 
-        cout << "\n======== MENU DE OPCOES =========";
-        cout << "\nBem-Vindo(a), " << usuarioCadastrado << "!\n";
-        cout << "\nData e Hora: " << ObterDataeHora() << endl;
-        cout << "\nSeu saldo e  R$: " << saldo << endl;
-        cout << "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-";
-        cout << "\n1 - (DEPOSITAR)\n";
-        cout << "\n2 - (SACAR)\n";
-        cout << "\n3 - (Total gasto)\n";
-        cout << "\n4 - (Extrato total)\n";
-        cout << "\n5 - (Logout)\n";
-        cout << "\n6 - (Sair)\n";
-        cout << "\nOpcao: ";
+        cout << "\n==================================================\n";
+        cout << "              MENU DE OPCOES\n";
+        cout << "==================================================\n";
+
+        cout << "\nBem-vindo(a), " << usuarioCadastrado << "!";
+        cout << "\nData e hora: " << ObterDataeHora();
+        cout << "\nSaldo atual: R$ " << saldo << "\n";
+
+        cout << "\n--------------------------------------------------\n";
+
+        cout << "\n[1] Depositar\n";
+        cout << "[2] Sacar\n";
+        cout << "[3] Total gasto\n";
+        cout << "[4] Extrato total\n";
+        cout << "[5] Logout\n";
+        cout << "[6] Sair\n";
+
+        cout << "\n--------------------------------------------------\n";
+        cout << "Opcao: ";
 
         cin >> opcao;
 
@@ -44,10 +51,26 @@ void Menu()
         }
         else if (opcao == 6)
         {
-            cout << "\n======= SAINDO DO SISTEMA =======\n";
+            cout << "\n==================================================\n";
+            cout << "                 SAINDO DO SISTEMA\n";
+            cout << "==================================================\n";
+
+            cout << "\nObrigado por utilizar o Controle Financeiro!\n";
+            cout << "Ate a proxima!\n";
+
+            cout << "\n==================================================\n";
         }
         else
-            cout << "\n======= OPCAO INVALIDA! =======\n";
+        {
+            cout << "\n==================================================\n";
+            cout << "                  OPCAO INVALIDA\n";
+            cout << "==================================================\n";
+
+            cout << "\nA opcao informada nao existe.\n";
+            cout << "Escolha uma opcao valida no menu.\n";
+
+            cout << "\n==================================================\n";
+        }
 
     } while (opcao != 5 && opcao != 6);
 }
@@ -62,11 +85,16 @@ int main()
     {
         do
         {
-            cout << "\n===== CONTROLE FINANCEIRO =====\n";
-            cout << "\n1 - (CADASTRO)\n";
-            cout << "\n2 - (LOGIN)\n";
-            cout << "\n3 - (SAIR)\n";
-            cout << "\nEscolha uma opcao: ";
+            cout << "\n==================================================\n";
+            cout << "           FINANCE CONTROL              \n";
+            cout << "       Seu dinheiro, seu controle.      \n";
+            cout << "==================================================\n";
+
+            cout << "\n[1] Cadastro\n";
+            cout << "[2] Login\n";
+            cout << "[3] Sair\n";
+
+            cout << "\n>> Escolha uma opcao: ";
             cin >> opcaoInicial;
 
             if (opcaoInicial == 1)
@@ -82,7 +110,12 @@ int main()
             }
             else if (opcaoInicial == 3)
             {
-                cout << "\n ======= PROGRAMA ENCERRADO! ========\n";
+                cout << "\n==================================================\n";
+                cout << "       CONTROLE FINANCEIRO ENCERRADO\n";
+                cout << "==================================================\n";
+                cout << "       Obrigado por utilizar!\n";
+                cout << "==================================================\n";
+
                 sqlite3_close(db);
                 return 0;
             }
@@ -108,9 +141,11 @@ int main()
         }
     }
 
-    cout << "\n====== ======= ====== ====== ======";
-    cout << "\n======= Controle encerrado! =======" << endl;
-    cout << "====== ======= ====== ====== ======\n";
+    cout << "\n========================================\n";
+    cout << "       CONTROLE FINANCEIRO ENCERRADO   \n";
+    cout << "========================================\n";
+    cout << "        Obrigado por utilizar!\n";
+    cout << "========================================\n";
 
     sqlite3_close(db);
     return 0;
